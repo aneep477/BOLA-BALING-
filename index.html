@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ms">
 <head>
@@ -199,14 +198,6 @@
       margin-bottom: 14px;
     }
     .skill-title { font-size: 0.95rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
-    .score-badge {
-      background: var(--primary-soft);
-      color: var(--primary);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.82rem;
-      font-weight: 800;
-    }
 
     .criterion-card {
       background: #ffffff;
@@ -215,9 +206,9 @@
       margin-bottom: 10px;
       border: 1px solid var(--border);
     }
-    .criterion-desc { font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 8px; display: block; }
+    .criterion-desc { font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 8px; display: block; }
 
-    /* SEGMENTED BUTTONS (CEMERLANG, SEDERHANA, LEMAH TANPA TEKS MARKAH) */
+    /* SEGMENTED BUTTONS (CEMERLANG, SEDERHANA, LEMAH - TANPA MARKAH DIPAPARKAN) */
     .segmented-group { display: flex; gap: 6px; }
     .seg-btn { flex: 1; display: block; cursor: pointer; position: relative; }
     .seg-btn input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
@@ -227,88 +218,68 @@
       padding: 10px 4px;
       background: #f1f5f9;
       border-radius: 10px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--text-muted);
       border: 1px solid var(--border);
       transition: all 0.2s ease;
     }
 
-    .seg-btn input[value="cemerlang"]:checked + .btn-text {
+    .seg-btn input[value="cemerlang"]:checked + .btn-text,
+    .seg-btn input[value="3"]:checked + .btn-text {
       background: #22c55e; color: #ffffff; border-color: #16a34a; font-weight: 800;
       box-shadow: 0 3px 8px rgba(34, 197, 94, 0.25);
     }
-    .seg-btn input[value="sederhana"]:checked + .btn-text {
+    .seg-btn input[value="sederhana"]:checked + .btn-text,
+    .seg-btn input[value="1.5"]:checked + .btn-text {
       background: #f59e0b; color: #ffffff; border-color: #d97706; font-weight: 800;
       box-shadow: 0 3px 8px rgba(245, 158, 11, 0.25);
     }
-    .seg-btn input[value="lemah"]:checked + .btn-text {
+    .seg-btn input[value="lemah"]:checked + .btn-text,
+    .seg-btn input[value="0"]:checked + .btn-text {
       background: #ef4444; color: #ffffff; border-color: #dc2626; font-weight: 800;
       box-shadow: 0 3px 8px rgba(239, 68, 68, 0.25);
-    }
-
-    /* GRID PERCUBAAN 1 & 2 */
-    .attempts-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-    .attempt-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 12px;
-    }
-    .attempt-title {
-      font-size: 0.76rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
     }
 
     .best-score-bar {
       background: #ffffff;
       border: 1px solid #bbf7d0;
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 6px;
+      margin-top: 12px;
     }
-    .best-score-bar span { font-size: 0.8rem; font-weight: 800; color: var(--text-muted); }
-    .best-score-value { font-size: 1.05rem; font-weight: 800; color: var(--primary); }
-
-    .auto-justification-box {
-      background: #fffbeb;
-      border: 1px solid #fde68a;
-      border-radius: 12px;
-      padding: 12px 16px;
-      font-size: 0.82rem;
-      color: #b45309;
-      font-weight: 600;
-      margin-top: 14px;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
+    .best-score-bar label { font-size: 0.88rem; font-weight: 800; color: var(--text-main); }
+    .score-input-editable {
+      width: 90px;
+      padding: 8px 10px;
+      border: 2px solid var(--primary);
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-align: center;
+      background: #f0fdf4;
+      outline: none;
+    }
+    .score-input-editable:focus {
+      border-color: #15803d;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
     }
 
     .btn-action {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       border-radius: 14px;
       border: none;
       background: var(--primary);
       color: #ffffff;
       font-weight: 800;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       cursor: pointer;
-      margin-top: 12px;
+      margin-top: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -378,15 +349,6 @@
       main.main-wrapper { padding: 0; }
       .report-sheet { padding: 0; border-radius: 0; }
     }
-  
-    #sec-amali .seg-btn input[value="3"]:checked + .btn-text { background: var(--success, #16a34a); color: #fff; border-color: var(--success, #16a34a); }
-    #sec-amali .seg-btn input[value="1.5"]:checked + .btn-text { background: var(--warning, #d97706); color: #fff; border-color: var(--warning, #d97706); }
-    #sec-amali .seg-btn input[value="0"]:checked + .btn-text { background: var(--danger, #dc2626); color: #fff; border-color: var(--danger, #dc2626); }
-    .manual-score-row { display:flex; align-items:center; justify-content:flex-end; gap:8px; margin-top:8px; font-size:.76rem; color:var(--text-muted); font-weight:700; }
-    .criterion-score-input { width:78px; padding:7px 8px; border:1px solid var(--border); border-radius:8px; font-weight:800; color:var(--text-main); background:#fff; }
-    .criterion-score-input:focus { outline:2px solid #86efac; border-color:var(--primary); }
-    #amaliLoadStatus { font-size:.76rem; }
-
   </style>
 </head>
 <body>
@@ -426,7 +388,7 @@
       </div>
 
       <div class="sidebar-footer">
-        <p>Dashboard Pentaksiran v3.6</p>
+        <p>Dashboard Pentaksiran v3.7</p>
         <p>© IPG Kampus Darulaman</p>
       </div>
     </aside>
@@ -443,127 +405,237 @@
 
       <div id="notification"></div>
 
-      <!-- TAB 1: PENILAIAN AMALI (DIKEMAS KINI SAHAJA) -->
+      <!-- TAB 1: PENILAIAN AMALI -->
       <div id="sec-amali" class="dashboard-card card-form">
-        <div class="card-header"><h3><i class="fa-solid fa-clipboard-check" style="color: var(--primary);"></i> Penilaian Amali Bola Baling (<span class="txtRoleDisplay">Penilai 1</span>)</h3></div>
-        <div class="form-group"><label class="field-label"><i class="fa-solid fa-user-graduate"></i> Pilih Pelajar Dari Google Sheet</label>
-          <select id="selectPelajarAmali" class="input-field" onchange="loadAmaliRecord()" required><option value="">-- Memuatkan Pelajar... --</option></select><small id="amaliLoadStatus" style="display:block;margin-top:6px;color:var(--text-muted)">Memuatkan senarai pelajar...</small></div>
+        <div class="card-header">
+          <h3><i class="fa-solid fa-clipboard-check" style="color: var(--primary);"></i> Penilaian Amali Bola Baling (<span class="txtRoleDisplay">Penilai 1</span>)</h3>
+        </div>
+        <div class="form-group">
+          <label class="field-label"><i class="fa-solid fa-user-graduate"></i> Pilih Pelajar Dari Google Sheet</label>
+          <select id="selectPelajarAmali" class="input-field" onchange="loadAmaliRecord()" required>
+            <option value="">-- Memuatkan Pelajar... --</option>
+          </select>
+          <small id="amaliLoadStatus" style="display:block;margin-top:6px;color:var(--text-muted)">Memuatkan senarai pelajar...</small>
+        </div>
+
         <form id="formAmali" onsubmit="handleAmaliSubmit(event)">
-          <p style="margin:0 0 12px;color:var(--text-muted);font-size:.85rem">Empat kemahiran, 15 markah setiap kemahiran. Jumlah penilaian amali: 60 markah.</p>
-          <div class="skill-block" style="margin-bottom:18px">
-            <div class="skill-block-header"><span class="skill-title">1. Kemahiran Hantaran</span><span class="score-badge" id="badge_hantaran">0.0 / 15 markah</span></div>
-            <div class="criterion-card"><span class="criterion-desc">1. Pegangan dan persediaan bola</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="hantaran_k1" value="3" onchange="setRubricScore('hantaran_k1', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="hantaran_k1" value="1.5" onchange="setRubricScore('hantaran_k1', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="hantaran_k1" value="0" onchange="setRubricScore('hantaran_k1', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_hantaran_k1">Markah kriteria (boleh edit):</label><input id="score_hantaran_k1" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('hantaran_k1')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">2. Kedudukan badan dan kaki</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="hantaran_k2" value="3" onchange="setRubricScore('hantaran_k2', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="hantaran_k2" value="1.5" onchange="setRubricScore('hantaran_k2', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="hantaran_k2" value="0" onchange="setRubricScore('hantaran_k2', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_hantaran_k2">Markah kriteria (boleh edit):</label><input id="score_hantaran_k2" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('hantaran_k2')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">3. Teknik hantaran</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="hantaran_k3" value="3" onchange="setRubricScore('hantaran_k3', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="hantaran_k3" value="1.5" onchange="setRubricScore('hantaran_k3', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="hantaran_k3" value="0" onchange="setRubricScore('hantaran_k3', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_hantaran_k3">Markah kriteria (boleh edit):</label><input id="score_hantaran_k3" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('hantaran_k3')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">4. Ketepatan dan kawalan hantaran</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="hantaran_k4" value="3" onchange="setRubricScore('hantaran_k4', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="hantaran_k4" value="1.5" onchange="setRubricScore('hantaran_k4', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="hantaran_k4" value="0" onchange="setRubricScore('hantaran_k4', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_hantaran_k4">Markah kriteria (boleh edit):</label><input id="score_hantaran_k4" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('hantaran_k4')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">5. P3 – Respon Berpandu</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="hantaran_k5" value="3" onchange="setRubricScore('hantaran_k5', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="hantaran_k5" value="1.5" onchange="setRubricScore('hantaran_k5', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="hantaran_k5" value="0" onchange="setRubricScore('hantaran_k5', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_hantaran_k5">Markah kriteria (boleh edit):</label><input id="score_hantaran_k5" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('hantaran_k5')"><span>/ 3</span></div></div>
-            <div class="best-score-bar"><span>Jumlah Kemahiran Hantaran:</span><strong class="best-score-value" id="txt_hantaran">15.0 / 15</strong></div></div>
-          <div class="skill-block" style="margin-bottom:18px">
-            <div class="skill-block-header"><span class="skill-title">2. Kemahiran Menyambut Bola</span><span class="score-badge" id="badge_sambut">0.0 / 15 markah</span></div>
-            <div class="criterion-card"><span class="criterion-desc">1. Kedudukan badan dan tangan</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="sambut_k1" value="3" onchange="setRubricScore('sambut_k1', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="sambut_k1" value="1.5" onchange="setRubricScore('sambut_k1', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="sambut_k1" value="0" onchange="setRubricScore('sambut_k1', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_sambut_k1">Markah kriteria (boleh edit):</label><input id="score_sambut_k1" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('sambut_k1')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">2. Pergerakan ke arah bola</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="sambut_k2" value="3" onchange="setRubricScore('sambut_k2', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="sambut_k2" value="1.5" onchange="setRubricScore('sambut_k2', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="sambut_k2" value="0" onchange="setRubricScore('sambut_k2', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_sambut_k2">Markah kriteria (boleh edit):</label><input id="score_sambut_k2" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('sambut_k2')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">3. Teknik menyambut bola</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="sambut_k3" value="3" onchange="setRubricScore('sambut_k3', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="sambut_k3" value="1.5" onchange="setRubricScore('sambut_k3', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="sambut_k3" value="0" onchange="setRubricScore('sambut_k3', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_sambut_k3">Markah kriteria (boleh edit):</label><input id="score_sambut_k3" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('sambut_k3')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">4. Kawalan selepas menyambut</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="sambut_k4" value="3" onchange="setRubricScore('sambut_k4', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="sambut_k4" value="1.5" onchange="setRubricScore('sambut_k4', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="sambut_k4" value="0" onchange="setRubricScore('sambut_k4', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_sambut_k4">Markah kriteria (boleh edit):</label><input id="score_sambut_k4" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('sambut_k4')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">5. P3 – Respon Berpandu</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="sambut_k5" value="3" onchange="setRubricScore('sambut_k5', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="sambut_k5" value="1.5" onchange="setRubricScore('sambut_k5', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="sambut_k5" value="0" onchange="setRubricScore('sambut_k5', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_sambut_k5">Markah kriteria (boleh edit):</label><input id="score_sambut_k5" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('sambut_k5')"><span>/ 3</span></div></div>
-            <div class="best-score-bar"><span>Jumlah Kemahiran Menyambut Bola:</span><strong class="best-score-value" id="txt_sambut">15.0 / 15</strong></div></div>
-          <div class="skill-block" style="margin-bottom:18px">
-            <div class="skill-block-header"><span class="skill-title">3. Kemahiran Mengelecek</span><span class="score-badge" id="badge_gelecek">0.0 / 15 markah</span></div>
-            <div class="criterion-card"><span class="criterion-desc">1. Kedudukan badan dan kaki</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="gelecek_k1" value="3" onchange="setRubricScore('gelecek_k1', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="gelecek_k1" value="1.5" onchange="setRubricScore('gelecek_k1', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="gelecek_k1" value="0" onchange="setRubricScore('gelecek_k1', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_gelecek_k1">Markah kriteria (boleh edit):</label><input id="score_gelecek_k1" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('gelecek_k1')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">2. Teknik menggelecek bola</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="gelecek_k2" value="3" onchange="setRubricScore('gelecek_k2', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="gelecek_k2" value="1.5" onchange="setRubricScore('gelecek_k2', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="gelecek_k2" value="0" onchange="setRubricScore('gelecek_k2', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_gelecek_k2">Markah kriteria (boleh edit):</label><input id="score_gelecek_k2" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('gelecek_k2')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">3. Kawalan bola</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="gelecek_k3" value="3" onchange="setRubricScore('gelecek_k3', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="gelecek_k3" value="1.5" onchange="setRubricScore('gelecek_k3', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="gelecek_k3" value="0" onchange="setRubricScore('gelecek_k3', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_gelecek_k3">Markah kriteria (boleh edit):</label><input id="score_gelecek_k3" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('gelecek_k3')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">4. Pergerakan dan perubahan arah</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="gelecek_k4" value="3" onchange="setRubricScore('gelecek_k4', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="gelecek_k4" value="1.5" onchange="setRubricScore('gelecek_k4', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="gelecek_k4" value="0" onchange="setRubricScore('gelecek_k4', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_gelecek_k4">Markah kriteria (boleh edit):</label><input id="score_gelecek_k4" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('gelecek_k4')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">5. P3 – Respon Berpandu</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="gelecek_k5" value="3" onchange="setRubricScore('gelecek_k5', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="gelecek_k5" value="1.5" onchange="setRubricScore('gelecek_k5', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="gelecek_k5" value="0" onchange="setRubricScore('gelecek_k5', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_gelecek_k5">Markah kriteria (boleh edit):</label><input id="score_gelecek_k5" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('gelecek_k5')"><span>/ 3</span></div></div>
-            <div class="best-score-bar"><span>Jumlah Kemahiran Mengelecek:</span><strong class="best-score-value" id="txt_gelecek">15.0 / 15</strong></div></div>
-          <div class="skill-block" style="margin-bottom:18px">
-            <div class="skill-block-header"><span class="skill-title">4. Kemahiran Menjaring</span><span class="score-badge" id="badge_jaring">0.0 / 15 markah</span></div>
-            <div class="criterion-card"><span class="criterion-desc">1. Pegangan dan persediaan bola</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="jaring_k1" value="3" onchange="setRubricScore('jaring_k1', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="jaring_k1" value="1.5" onchange="setRubricScore('jaring_k1', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="jaring_k1" value="0" onchange="setRubricScore('jaring_k1', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_jaring_k1">Markah kriteria (boleh edit):</label><input id="score_jaring_k1" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('jaring_k1')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">2. Kedudukan badan dan kaki</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="jaring_k2" value="3" onchange="setRubricScore('jaring_k2', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="jaring_k2" value="1.5" onchange="setRubricScore('jaring_k2', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="jaring_k2" value="0" onchange="setRubricScore('jaring_k2', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_jaring_k2">Markah kriteria (boleh edit):</label><input id="score_jaring_k2" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('jaring_k2')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">3. Teknik menjaring</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="jaring_k3" value="3" onchange="setRubricScore('jaring_k3', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="jaring_k3" value="1.5" onchange="setRubricScore('jaring_k3', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="jaring_k3" value="0" onchange="setRubricScore('jaring_k3', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_jaring_k3">Markah kriteria (boleh edit):</label><input id="score_jaring_k3" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('jaring_k3')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">4. Ketepatan dan kawalan jaringan</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="jaring_k4" value="3" onchange="setRubricScore('jaring_k4', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="jaring_k4" value="1.5" onchange="setRubricScore('jaring_k4', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="jaring_k4" value="0" onchange="setRubricScore('jaring_k4', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_jaring_k4">Markah kriteria (boleh edit):</label><input id="score_jaring_k4" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('jaring_k4')"><span>/ 3</span></div></div>
-            <div class="criterion-card"><span class="criterion-desc">5. P3 – Respon Berpandu</span><div class="segmented-group">
-              <label class="seg-btn"><input type="radio" name="jaring_k5" value="3" onchange="setRubricScore('jaring_k5', 3)"><span class="btn-text">Amat Cemerlang</span></label>
-              <label class="seg-btn"><input type="radio" name="jaring_k5" value="1.5" onchange="setRubricScore('jaring_k5', 1.5)"><span class="btn-text">Sederhana</span></label>
-              <label class="seg-btn"><input type="radio" name="jaring_k5" value="0" onchange="setRubricScore('jaring_k5', 0)"><span class="btn-text">Lemah</span></label>
-            </div><div class="manual-score-row"><label for="score_jaring_k5">Markah kriteria (boleh edit):</label><input id="score_jaring_k5" class="criterion-score-input" type="number" min="0" max="3" step="0.1" value="0" oninput="manualAmaliScoreChanged('jaring_k5')"><span>/ 3</span></div></div>
-            <div class="best-score-bar"><span>Jumlah Kemahiran Menjaring:</span><strong class="best-score-value" id="txt_jaring">15.0 / 15</strong></div></div>
-          <div class="best-score-bar" style="font-size:1.05rem"><strong>JUMLAH KESELURUHAN AMALI (/60)</strong><strong class="best-score-value" id="txt_total_amali">60.0 / 60</strong></div>
-          <div class="criterion-card"><strong>Justifikasi Penilaian:</strong><p id="justification_amali" style="margin:6px 0 0">Pengiraan automatik berdasarkan rubrik.</p></div>
+          <p style="margin:0 0 14px;color:var(--text-muted);font-size:.85rem">Pilih aras bagi setiap pernyataan kriteria. Markah kemahiran dijumlahkan automatik dan boleh diubah manual oleh pensyarah jika perlu (Maksimum 60 markah).</p>
+
+          <!-- 1. HANTARAN -->
+          <div class="skill-block">
+            <div class="skill-block-header">
+              <span class="skill-title">1. Kemahiran Hantaran</span>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">1. Pegangan dan persediaan bola</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="hantaran_k1" value="3" onchange="onCriterionChange('hantaran')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="hantaran_k1" value="1.5" onchange="onCriterionChange('hantaran')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="hantaran_k1" value="0" onchange="onCriterionChange('hantaran')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">2. Kedudukan badan dan kaki</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="hantaran_k2" value="3" onchange="onCriterionChange('hantaran')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="hantaran_k2" value="1.5" onchange="onCriterionChange('hantaran')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="hantaran_k2" value="0" onchange="onCriterionChange('hantaran')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">3. Teknik hantaran</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="hantaran_k3" value="3" onchange="onCriterionChange('hantaran')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="hantaran_k3" value="1.5" onchange="onCriterionChange('hantaran')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="hantaran_k3" value="0" onchange="onCriterionChange('hantaran')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">4. Ketepatan dan kawalan hantaran</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="hantaran_k4" value="3" onchange="onCriterionChange('hantaran')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="hantaran_k4" value="1.5" onchange="onCriterionChange('hantaran')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="hantaran_k4" value="0" onchange="onCriterionChange('hantaran')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">5. P3 – Respon Berpandu</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="hantaran_k5" value="3" onchange="onCriterionChange('hantaran')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="hantaran_k5" value="1.5" onchange="onCriterionChange('hantaran')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="hantaran_k5" value="0" onchange="onCriterionChange('hantaran')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="best-score-bar">
+              <label for="total_hantaran">Jumlah Kemahiran Hantaran (/15):</label>
+              <input type="number" id="total_hantaran" class="score-input-editable" min="0" max="15" step="0.1" value="0.0" oninput="onManualSkillTotalChange()">
+            </div>
+          </div>
+
+          <!-- 2. MENYAMBUT BOLA -->
+          <div class="skill-block">
+            <div class="skill-block-header">
+              <span class="skill-title">2. Kemahiran Menyambut Bola</span>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">1. Kedudukan badan dan tangan</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="sambut_k1" value="3" onchange="onCriterionChange('sambut')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="sambut_k1" value="1.5" onchange="onCriterionChange('sambut')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="sambut_k1" value="0" onchange="onCriterionChange('sambut')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">2. Pergerakan ke arah bola</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="sambut_k2" value="3" onchange="onCriterionChange('sambut')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="sambut_k2" value="1.5" onchange="onCriterionChange('sambut')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="sambut_k2" value="0" onchange="onCriterionChange('sambut')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">3. Teknik menyambut bola</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="sambut_k3" value="3" onchange="onCriterionChange('sambut')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="sambut_k3" value="1.5" onchange="onCriterionChange('sambut')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="sambut_k3" value="0" onchange="onCriterionChange('sambut')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">4. Kawalan selepas menyambut</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="sambut_k4" value="3" onchange="onCriterionChange('sambut')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="sambut_k4" value="1.5" onchange="onCriterionChange('sambut')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="sambut_k4" value="0" onchange="onCriterionChange('sambut')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">5. P3 – Respon Berpandu</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="sambut_k5" value="3" onchange="onCriterionChange('sambut')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="sambut_k5" value="1.5" onchange="onCriterionChange('sambut')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="sambut_k5" value="0" onchange="onCriterionChange('sambut')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="best-score-bar">
+              <label for="total_sambut">Jumlah Kemahiran Menyambut Bola (/15):</label>
+              <input type="number" id="total_sambut" class="score-input-editable" min="0" max="15" step="0.1" value="0.0" oninput="onManualSkillTotalChange()">
+            </div>
+          </div>
+
+          <!-- 3. MENGELECEK -->
+          <div class="skill-block">
+            <div class="skill-block-header">
+              <span class="skill-title">3. Kemahiran Mengelecek</span>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">1. Kedudukan badan dan kaki</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="gelecek_k1" value="3" onchange="onCriterionChange('gelecek')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="gelecek_k1" value="1.5" onchange="onCriterionChange('gelecek')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="gelecek_k1" value="0" onchange="onCriterionChange('gelecek')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">2. Teknik menggelecek bola</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="gelecek_k2" value="3" onchange="onCriterionChange('gelecek')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="gelecek_k2" value="1.5" onchange="onCriterionChange('gelecek')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="gelecek_k2" value="0" onchange="onCriterionChange('gelecek')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">3. Kawalan bola</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="gelecek_k3" value="3" onchange="onCriterionChange('gelecek')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="gelecek_k3" value="1.5" onchange="onCriterionChange('gelecek')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="gelecek_k3" value="0" onchange="onCriterionChange('gelecek')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">4. Pergerakan dan perubahan arah</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="gelecek_k4" value="3" onchange="onCriterionChange('gelecek')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="gelecek_k4" value="1.5" onchange="onCriterionChange('gelecek')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="gelecek_k4" value="0" onchange="onCriterionChange('gelecek')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">5. P3 – Respon Berpandu</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="gelecek_k5" value="3" onchange="onCriterionChange('gelecek')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="gelecek_k5" value="1.5" onchange="onCriterionChange('gelecek')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="gelecek_k5" value="0" onchange="onCriterionChange('gelecek')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="best-score-bar">
+              <label for="total_gelecek">Jumlah Kemahiran Mengelecek (/15):</label>
+              <input type="number" id="total_gelecek" class="score-input-editable" min="0" max="15" step="0.1" value="0.0" oninput="onManualSkillTotalChange()">
+            </div>
+          </div>
+
+          <!-- 4. MENJARING -->
+          <div class="skill-block">
+            <div class="skill-block-header">
+              <span class="skill-title">4. Kemahiran Menjaring</span>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">1. Pegangan dan persediaan bola</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="jaring_k1" value="3" onchange="onCriterionChange('jaring')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="jaring_k1" value="1.5" onchange="onCriterionChange('jaring')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="jaring_k1" value="0" onchange="onCriterionChange('jaring')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">2. Kedudukan badan dan kaki</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="jaring_k2" value="3" onchange="onCriterionChange('jaring')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="jaring_k2" value="1.5" onchange="onCriterionChange('jaring')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="jaring_k2" value="0" onchange="onCriterionChange('jaring')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">3. Teknik menjaring</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="jaring_k3" value="3" onchange="onCriterionChange('jaring')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="jaring_k3" value="1.5" onchange="onCriterionChange('jaring')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="jaring_k3" value="0" onchange="onCriterionChange('jaring')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">4. Ketepatan dan kawalan jaringan</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="jaring_k4" value="3" onchange="onCriterionChange('jaring')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="jaring_k4" value="1.5" onchange="onCriterionChange('jaring')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="jaring_k4" value="0" onchange="onCriterionChange('jaring')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="criterion-card">
+              <span class="criterion-desc">5. P3 – Respon Berpandu</span>
+              <div class="segmented-group">
+                <label class="seg-btn"><input type="radio" name="jaring_k5" value="3" onchange="onCriterionChange('jaring')"><span class="btn-text">Cemerlang</span></label>
+                <label class="seg-btn"><input type="radio" name="jaring_k5" value="1.5" onchange="onCriterionChange('jaring')"><span class="btn-text">Sederhana</span></label>
+                <label class="seg-btn"><input type="radio" name="jaring_k5" value="0" onchange="onCriterionChange('jaring')"><span class="btn-text">Lemah</span></label>
+              </div>
+            </div>
+            <div class="best-score-bar">
+              <label for="total_jaring">Jumlah Kemahiran Menjaring (/15):</label>
+              <input type="number" id="total_jaring" class="score-input-editable" min="0" max="15" step="0.1" value="0.0" oninput="onManualSkillTotalChange()">
+            </div>
+          </div>
+
+          <!-- JUMLAH KESELURUHAN AMALI -->
+          <div class="best-score-bar" style="font-size:1.05rem; background:#f0fdf4; border-color:#86efac; margin-top:20px;">
+            <strong>JUMLAH KESELURUHAN AMALI (/60):</strong>
+            <strong class="best-score-value" id="txt_total_amali" style="font-size:1.4rem; color:var(--primary);">0.0 / 60</strong>
+          </div>
+          
+          <div class="criterion-card" style="margin-top:14px;">
+            <strong>Justifikasi Penilaian:</strong>
+            <p id="justification_amali" style="margin:6px 0 0; color:var(--text-muted); font-size:0.85rem;">Pengiraan automatik berdasarkan jumlah akhir kemahiran.</p>
+          </div>
+          
           <button type="submit" class="btn-action"><i class="fa-solid fa-floppy-disk"></i> Simpan / Kemaskini Markah Amali</button>
         </form>
       </div>
@@ -661,7 +733,7 @@
             </div>
           </div>
 
-          <div class="auto-justification-box">
+          <div class="auto-justification-box" style="background:#fffbeb; border:1px solid #fde68a; border-radius:12px; padding:12px 16px; font-size:0.82rem; color:#b45309; font-weight:600; margin-top:14px; display:flex; gap:10px; align-items:flex-start;">
             <i class="fa-solid fa-wand-magic-sparkles" style="font-size: 1.1rem;"></i>
             <span id="justification_simulasi">Menjana ulasan justifikasi simulasi automatik...</span>
           </div>
@@ -797,10 +869,11 @@
 
     let rawPelajarList = [];
     let radarChartInstance = null;
+    const AMALI_SKILLS = ['hantaran','sambut','gelecek','jaring'];
 
     window.addEventListener('DOMContentLoaded', () => {
       loadPelajarData();
-      updateAmaliRubric();
+      calculateGrandTotalAmali();
       updateSimulasiRubric();
       updateRoleUI();
     });
@@ -842,26 +915,54 @@
       return await res.json();
     }
 
-    const AMALI_SKILLS = ['hantaran','sambut','gelecek','jaring'];
-    function criterionScore(name) { const el=document.getElementById(`score_${name}`); return el ? (Number(el.value)||0) : 0; }
-    function setRubricScore(name,value) { const el=document.getElementById(`score_${name}`); if(el) el.value=Number(value).toFixed(1); calculateAmaliScore(); }
-    function manualAmaliScoreChanged(name) {
-      const el=document.getElementById(`score_${name}`); let value=Number(el.value);
-      if(!Number.isFinite(value)) value=0; value=Math.max(0,Math.min(3,value)); el.value=value;
-      document.querySelectorAll(`input[name="${name}"]`).forEach(r=>r.checked=Number(r.value)===value); calculateAmaliScore();
+    /* LOGIK PENGIRAAN MARKAH AMALI BAHARU */
+    
+    // 1. Apabila pilihan rubrik berubah, hitung automatik jumlah kemahiran tersebut
+    function onCriterionChange(skillId) {
+      let sum = 0;
+      for (let i = 1; i <= 5; i++) {
+        const selected = document.querySelector(`input[name="${skillId}_k${i}"]:checked`);
+        if (selected) {
+          sum += parseFloat(selected.value) || 0;
+        }
+      }
+      sum = Math.min(15, sum);
+      document.getElementById(`total_${skillId}`).value = sum.toFixed(1);
+      calculateGrandTotalAmali();
     }
-    function calculateAmaliScore() {
-      let total=0;
-      AMALI_SKILLS.forEach(id=>{let score=0;for(let i=1;i<=5;i++)score+=criterionScore(`${id}_k${i}`);score=Math.min(15,score);total+=score;
-        document.getElementById(`badge_${id}`).innerText=`${score.toFixed(1)} / 15 markah`;
-        document.getElementById(`txt_${id}`).innerText=`${score.toFixed(1)} / 15`;});
-      document.getElementById('txt_total_amali').innerText=`${total.toFixed(1)} / 60`;
-      const role=document.getElementById('evaluatorRole').value;let note=`Penilai ${role}: Jumlah ${total.toFixed(1)}/60. `;
-      note+=total>=45?'Penguasaan keseluruhan kemahiran amat baik.':total>=30?'Penguasaan sederhana; beberapa kemahiran perlu diperkukuh.':'Memerlukan latihan dan bimbingan lanjut.';
-      document.getElementById('justification_amali').innerText=note;
-    }
-    function updateAmaliRubric(){calculateAmaliScore();}
 
+    // 2. Apabila pensyarah menyunting jumlah kemahiran secara manual
+    function onManualSkillTotalChange() {
+      AMALI_SKILLS.forEach(id => {
+        const input = document.getElementById(`total_${id}`);
+        let val = parseFloat(input.value);
+        if (isNaN(val) || val < 0) val = 0;
+        if (val > 15) val = 15;
+        input.value = val;
+      });
+      calculateGrandTotalAmali();
+    }
+
+    // 3. Mengira Jumlah Keseluruhan Amali daripada 4 jumlah akhir kemahiran
+    function calculateGrandTotalAmali() {
+      let grandTotal = 0;
+      AMALI_SKILLS.forEach(id => {
+        const val = parseFloat(document.getElementById(`total_${id}`).value) || 0;
+        grandTotal += val;
+      });
+      grandTotal = Math.min(60, grandTotal);
+      document.getElementById('txt_total_amali').innerText = `${grandTotal.toFixed(1)} / 60`;
+      
+      const role = document.getElementById('evaluatorRole').value;
+      let note = `Penilai ${role}: Jumlah Akhir Amali (${grandTotal.toFixed(1)}/60). `;
+      if (grandTotal >= 45) note += "Penguasaan amali keseluruhan amat baik.";
+      else if (grandTotal >= 30) note += "Penguasaan sederhana; beberapa kemahiran perlu diperkukuh.";
+      else note += "Memerlukan latihan dan bimbingan lanjut.";
+      
+      document.getElementById('justification_amali').innerText = note;
+    }
+
+    /* SIMULASI LOGIK */
     function updateSimulasiRubric() {
       let h2_1 = parseFloat(document.querySelector('input[name="hpp2_f1"]:checked').dataset.score);
       let h2_2 = parseFloat(document.querySelector('input[name="hpp2_f2"]:checked').dataset.score);
@@ -895,8 +996,14 @@
     }
 
     function resetAmaliForm() {
-      AMALI_SKILLS.forEach(id=>{for(let i=1;i<=5;i++){const name=`${id}_k${i}`;document.querySelectorAll(`input[name="${name}"]`).forEach(el=>el.checked=false);const score=document.getElementById(`score_${name}`);if(score)score.value='0';}});
-      calculateAmaliScore();
+      AMALI_SKILLS.forEach(id => {
+        for (let i = 1; i <= 5; i++) {
+          const name = `${id}_k${i}`;
+          document.querySelectorAll(`input[name="${name}"]`).forEach(el => el.checked = false);
+        }
+        document.getElementById(`total_${id}`).value = '0.0';
+      });
+      calculateGrandTotalAmali();
     }
 
     function resetSimulasiForm() {
@@ -939,42 +1046,122 @@
     }
 
     async function loadPelajarData() {
-      const status=document.getElementById('amaliLoadStatus');
+      const status = document.getElementById('amaliLoadStatus');
       try {
-        if(status)status.textContent='Sedang mengambil senarai pelajar daripada Google Sheet...';
-        const data=await apiGet('getPelajar'); const pelajar=Array.isArray(data)?data:(data&&(data.data||data.pelajar||data.records))||[];
-        if(!Array.isArray(pelajar))throw new Error('Format data pelajar tidak dikenali.');
+        if(status) status.textContent = 'Sedang mengambil senarai pelajar daripada Google Sheet...';
+        const data = await apiGet('getPelajar'); 
+        const pelajar = Array.isArray(data) ? data : (data && (data.data || data.pelajar || data.records)) || [];
+        if(!Array.isArray(pelajar)) throw new Error('Format data pelajar tidak dikenali.');
         populateDropdowns(pelajar);
-        if(!rawPelajarList.length){if(status)status.textContent='Tiada rekod pelajar ditemui. Semak tab Data_Pelajar (lajur A hingga E) dan deployment Apps Script.';showAlert('Senarai pelajar kosong. Pastikan tab Data_Pelajar mempunyai nama pelajar pada lajur B.',true);}
-        else if(status)status.textContent=`${rawPelajarList.length} orang pelajar berjaya dimuatkan. Pilih pelajar untuk memuatkan markah sedia ada.`;
-      }catch(err){if(status)status.textContent='Gagal memuatkan pelajar: '+err.message;showAlert(err.message,true);}
+        if(!rawPelajarList.length){
+          if(status) status.textContent = 'Tiada rekod pelajar ditemui. Semak tab Data_Pelajar.';
+          showAlert('Senarai pelajar kosong.', true);
+        } else if(status) {
+          status.textContent = `${rawPelajarList.length} orang pelajar berjaya dimuatkan. Pilih pelajar untuk pentaksiran.`;
+        }
+      } catch(err) {
+        if(status) status.textContent = 'Gagal memuatkan pelajar: ' + err.message;
+        showAlert(err.message, true);
+      }
     }
+
     function populateDropdowns(pelajar) {
-      rawPelajarList=pelajar.map(p=>({bil:p.bil??'',nama:String(p.nama??p.name??'').trim(),nokp:String(p.nokp??p.noKP??p.no_kp??'-').trim(),angkaGiliran:String(p.angkaGiliran??p.angka_giliran??p.ag??'').trim(),unit:String(p.unit??p.kelas??'-').trim()})).filter(p=>p.nama&&p.angkaGiliran);
-      const opts='<option value="">-- Pilih Pelajar --</option>'+rawPelajarList.map(p=>`<option value="${escapeHtml(p.angkaGiliran)}">${escapeHtml(p.bil)}. ${escapeHtml(p.nama)} (${escapeHtml(p.unit)})</option>`).join('');
-      ['selectPelajarAmali','selectPelajarSimulasi','selectPelajarLaporan'].forEach(id=>document.getElementById(id).innerHTML=opts);
+      rawPelajarList = pelajar.map(p => ({
+        bil: p.bil ?? '',
+        nama: String(p.nama ?? p.name ?? '').trim(),
+        nokp: String(p.nokp ?? p.noKP ?? p.no_kp ?? '-').trim(),
+        angkaGiliran: String(p.angkaGiliran ?? p.angka_giliran ?? p.ag ?? '').trim(),
+        unit: String(p.unit ?? p.kelas ?? '-').trim()
+      })).filter(p => p.nama && p.angkaGiliran);
+
+      const opts = '<option value="">-- Pilih Pelajar --</option>' + rawPelajarList.map(p => `<option value="${escapeHtml(p.angkaGiliran)}">${escapeHtml(p.bil)}. ${escapeHtml(p.nama)} (${escapeHtml(p.unit)})</option>`).join('');
+      ['selectPelajarAmali','selectPelajarSimulasi','selectPelajarLaporan'].forEach(id => document.getElementById(id).innerHTML = opts);
     }
-    function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+
+    function escapeHtml(v) {
+      return String(v??'').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    }
+
     async function loadAmaliRecord() {
-      const ag=document.getElementById('selectPelajarAmali').value,role=document.getElementById('evaluatorRole').value,status=document.getElementById('amaliLoadStatus');
-      resetAmaliForm(); if(!ag){if(status)status.textContent='Pilih pelajar untuk memuatkan atau memasukkan markah.';return;}
-      if(status)status.textContent=`Memuatkan markah sedia ada untuk ${role}...`;
-      try{
-        const result=await apiGet('getAmali',{angkaGiliran:ag,role}),record=result&&(result.record||result.data||result);
-        if(record&&record.found&&record.kriteria){
-          AMALI_SKILLS.forEach(id=>{const vals=record.kriteria[id]||[];for(let i=1;i<=5;i++){const v=Number(vals[i-1]??0),el=document.getElementById(`score_${id}_k${i}`);if(el)el.value=v.toFixed(1);document.querySelectorAll(`input[name="${id}_k${i}"]`).forEach(r=>r.checked=Number(r.value)===v);}});
-          if(status)status.textContent=`Markah ${role} sedia ada dimuatkan. Pensyarah boleh menyunting markah dan menyimpan kemas kini.`;
-        }else if(status)status.textContent=`Belum ada markah ${role} untuk pelajar ini. Masukkan markah baharu.`;
-        calculateAmaliScore();
-      }catch(err){if(status)status.textContent='Gagal memuatkan markah: '+err.message;showAlert(err.message,true);}
+      const ag = document.getElementById('selectPelajarAmali').value;
+      const role = document.getElementById('evaluatorRole').value;
+      const status = document.getElementById('amaliLoadStatus');
+      resetAmaliForm(); 
+      if(!ag) {
+        if(status) status.textContent = 'Pilih pelajar untuk memuatkan atau memasukkan markah.';
+        return;
+      }
+      if(status) status.textContent = `Memuatkan markah sedia ada untuk ${role}...`;
+      try {
+        const result = await apiGet('getAmali', { angkaGiliran: ag, role });
+        const record = result && (result.record || result.data || result);
+        if(record && record.found) {
+          if (record.kriteria) {
+            AMALI_SKILLS.forEach(id => {
+              const vals = record.kriteria[id] || [];
+              for(let i = 1; i <= 5; i++) {
+                const v = Number(vals[i-1] ?? 0);
+                const rad = document.querySelector(`input[name="${id}_k${i}"][value="${v}"]`);
+                if(rad) rad.checked = true;
+              }
+            });
+          }
+          if (record.totals) {
+            AMALI_SKILLS.forEach(id => {
+              if (record.totals[id] !== undefined) {
+                document.getElementById(`total_${id}`).value = Number(record.totals[id]).toFixed(1);
+              }
+            });
+          }
+          if(status) status.textContent = `Markah ${role} sedia ada dimuatkan. Pensyarah boleh menyunting markah dan menyimpan kemas kini.`;
+        } else if(status) {
+          status.textContent = `Belum ada markah ${role} untuk pelajar ini. Masukkan markah baharu.`;
+        }
+        calculateGrandTotalAmali();
+      } catch(err) {
+        if(status) status.textContent = 'Gagal memuatkan markah: ' + err.message;
+        showAlert(err.message, true);
+      }
     }
+
     async function handleAmaliSubmit(e) {
-      e.preventDefault();const role=document.getElementById('evaluatorRole').value,ag=document.getElementById('selectPelajarAmali').value,p=rawPelajarList.find(x=>x.angkaGiliran===ag);
-      if(!p)return showAlert('Sila pilih pelajar yang sah.',true);
-      const kriteria={};AMALI_SKILLS.forEach(id=>{kriteria[id]=[];for(let i=1;i<=5;i++)kriteria[id].push(criterionScore(`${id}_k${i}`));});
-      const payload={role,angkaGiliran:p.angkaGiliran,nama:p.nama,unit:p.unit,kriteria,justifikasi:document.getElementById('justification_amali').innerText};
-      try{const res=await apiPost('simpanAmali',payload);if(!res||res.success===false)throw new Error(res?.message||'Gagal menyimpan markah.');showAlert(res.message||'Markah amali berjaya dikemaskini.');if(document.getElementById('selectPelajarLaporan').value===ag)janaLaporan();loadAmaliRecord();}
-      catch(err){showAlert(err.message,true);}
+      e.preventDefault();
+      const role = document.getElementById('evaluatorRole').value;
+      const ag = document.getElementById('selectPelajarAmali').value;
+      const p = rawPelajarList.find(x => x.angkaGiliran === ag);
+      if(!p) return showAlert('Sila pilih pelajar yang sah.', true);
+
+      const kriteria = {};
+      const totals = {};
+      
+      AMALI_SKILLS.forEach(id => {
+        kriteria[id] = [];
+        for(let i = 1; i <= 5; i++) {
+          const selected = document.querySelector(`input[name="${id}_k${i}"]:checked`);
+          kriteria[id].push(selected ? parseFloat(selected.value) : 0);
+        }
+        totals[id] = parseFloat(document.getElementById(`total_${id}`).value) || 0;
+      });
+
+      const payload = {
+        role,
+        angkaGiliran: p.angkaGiliran,
+        nama: p.nama,
+        unit: p.unit,
+        kriteria,
+        totals,
+        justifikasi: document.getElementById('justification_amali').innerText
+      };
+
+      try {
+        const res = await apiPost('simpanAmali', payload);
+        if(!res || res.success === false) throw new Error(res?.message || 'Gagal menyimpan markah.');
+        showAlert(res.message || 'Markah amali berjaya dikemaskini.');
+        if(document.getElementById('selectPelajarLaporan').value === ag) janaLaporan();
+        loadAmaliRecord();
+      } catch(err) {
+        showAlert(err.message, true);
+      }
     }
 
     async function handleSimulasiSubmit(e) {
