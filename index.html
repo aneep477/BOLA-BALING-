@@ -208,7 +208,6 @@
     }
     .criterion-desc { font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 8px; display: block; }
 
-    /* SEGMENTED BUTTONS (CEMERLANG, SEDERHANA, LEMAH - TANPA MARKAH DIPAPARKAN) */
     .segmented-group { display: flex; gap: 6px; }
     .seg-btn { flex: 1; display: block; cursor: pointer; position: relative; }
     .seg-btn input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
@@ -345,9 +344,11 @@
     }
 
     @media print {
-      aside.sidebar, .top-bar-mobile, .card-form, .btn-print, .uploader-box { display: none !important; }
-      main.main-wrapper { padding: 0; }
-      .report-sheet { padding: 0; border-radius: 0; }
+      aside.sidebar, .top-bar-mobile, .card-form, .btn-print, .uploader-box, nav.nav-menu { display: none !important; }
+      main.main-wrapper { padding: 0; margin: 0; max-width: 100%; }
+      .dashboard-card { border: none !important; box-shadow: none !important; padding: 0 !important; background: transparent !important; }
+      .report-sheet { padding: 0; border-radius: 0; width: 100%; }
+      body { background: #fff !important; color: #000 !important; }
     }
   </style>
 </head>
@@ -384,11 +385,14 @@
           <button id="btn-tab-dashboard" onclick="switchTab('dashboard')">
             <i class="fa-solid fa-chart-pie"></i> 3. Profil & Spider Radar
           </button>
+          <button id="btn-tab-rawdata" onclick="switchTab('rawdata')">
+            <i class="fa-solid fa-table-list"></i> 4. Borang Raw Data Kelas
+          </button>
         </nav>
       </div>
 
       <div class="sidebar-footer">
-        <p>Dashboard Pentaksiran v3.7</p>
+        <p>Dashboard Pentaksiran v3.8</p>
         <p>© IPG Kampus Darulaman</p>
       </div>
     </aside>
@@ -799,10 +803,10 @@
           </div>
 
           <button onclick="window.print()" class="btn-action btn-print" style="background:#1e40af; margin-bottom:20px;">
-            <i class="fa-solid fa-print"></i> Cetak Laporan Penuh (PDF / Kertas)
+            <i class="fa-solid fa-print"></i> Cetak Laporan Penuh Individual (PDF / Kertas)
           </button>
 
-          <!-- BORANG CETAKAN LAPORAN -->
+          <!-- BORANG CETAKAN LAPORAN INDIVIDU -->
           <div class="report-sheet">
             <div class="report-header">
               <img id="imgLogoPreview" class="logo-img" src="" alt="Logo IPG" style="display:none; margin:0 auto 4px auto;">
@@ -861,11 +865,79 @@
         </div>
       </div>
 
+      <!-- TAB 4: BORANG RAW DATA AMALI KEMAHIRAN (KESELURUHAN KELAS) -->
+      <div id="sec-rawdata" class="dashboard-card hidden">
+        <div class="card-header card-form">
+          <h3><i class="fa-solid fa-table-list" style="color: var(--primary);"></i> Borang Raw Data Kemahiran Keseluruhan Kelas</h3>
+        </div>
+        
+        <div class="card-form" style="display: flex; gap: 12px; margin-bottom: 20px; align-items: center;">
+          <button onclick="loadRawDataKelas()" class="btn-action" style="width: auto; margin-top: 0; padding: 11px 20px;">
+            <i class="fa-solid fa-rotate"></i> Muat Semula Data
+          </button>
+          <button onclick="window.print()" class="btn-action btn-print" style="width: auto; margin-top: 0; padding: 11px 20px; background: #1e40af;">
+            <i class="fa-solid fa-print"></i> Cetak Borang Raw Data Kelas
+          </button>
+        </div>
+
+        <div id="rawDataPrintSheet" class="report-sheet">
+          <div class="report-header">
+            <img id="imgLogoPreviewRaw" class="logo-img" src="" alt="Logo IPG" style="display:none; margin:0 auto 4px auto;">
+            <h2 style="font-size:1.1rem; text-transform:uppercase; margin-bottom: 2px;">INSTITUT PENDIDIKAN GURU KAMPUS DARULAMAN</h2>
+            <h3 style="font-size:0.95rem; font-weight:bold;">BORANG RAW DATA KEMAHIRAN AMALI (KESELURUHAN KELAS)</h3>
+            <h3 style="font-size:0.85rem; font-weight:normal;">KURSUS: MPU3421 KOKURIKULUM - PERMAINAN (BOLA BALING)</h3>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.85rem; font-weight: bold;">
+            <div>Unit / Kelas: <span id="rawSheetUnit">Semua Unit</span></div>
+            <div>Jumlah Pelajar: <span id="rawSheetTotalCount">0</span> orang</div>
+          </div>
+
+          <table class="report-table" style="font-size: 0.78rem;">
+            <thead>
+              <tr>
+                <th rowspan="2" style="width: 4%; text-align: center;">Bil</th>
+                <th rowspan="2" style="width: 14%;">Angka Giliran</th>
+                <th rowspan="2" style="width: 24%;">Nama Pelajar</th>
+                <th rowspan="2" style="width: 10%;">Unit</th>
+                <th colspan="4" style="text-align: center;">Kemahiran Amali (/15)</th>
+                <th rowspan="2" style="width: 10%; text-align: center;">Jumlah Amali (/60)</th>
+                <th rowspan="2" style="width: 8%; text-align: center;">Status Penilaian</th>
+              </tr>
+              <tr>
+                <th style="text-align: center;">Hantaran</th>
+                <th style="text-align: center;">Menyambut</th>
+                <th style="text-align: center;">Mengelecek</th>
+                <th style="text-align: center;">Menjaring</th>
+              </tr>
+            </thead>
+            <tbody id="tbRawDataBody">
+              <tr><td colspan="10" style="text-align: center;">Sila klik 'Muat Semula Data' untuk memaparkan senarai.</td></tr>
+            </tbody>
+          </table>
+
+          <div style="margin-top: 30px; display: flex; justify-content: space-between; font-size: 0.82rem; page-break-inside: avoid;">
+            <div style="text-align: center; width: 40%;">
+              <p>....................................................</p>
+              <p><b>(Tandatangan Penilai 1)</b></p>
+              <p>Nama:</p>
+              <p>Tarikh:</p>
+            </div>
+            <div style="text-align: center; width: 40%;">
+              <p>....................................................</p>
+              <p><b>(Tandatangan Penilai 2)</b></p>
+              <p>Nama:</p>
+              <p>Tarikh:</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </main>
   </div>
 
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbwY8GOHepH7oDP8PjSQ77fPbU249bl7mqVU_bLSbDDP6qYDoggxNUEJqI8N7Bw4WHZWvA/exec";
+    const API_URL = "https://script.google.com/macros/s/AKfycbzgUfTDrpkDn0oURpAaTNLAgVZE8w7R3lmAtPGPbKU-uPEbPv0Iq9wXP2MF3uRI5peLew/exec";
 
     let rawPelajarList = [];
     let radarChartInstance = null;
@@ -886,8 +958,11 @@
       const reader = new FileReader();
       reader.onload = function() {
         const img = document.getElementById('imgLogoPreview');
+        const imgRaw = document.getElementById('imgLogoPreviewRaw');
         img.src = reader.result;
         img.style.display = 'block';
+        imgRaw.src = reader.result;
+        imgRaw.style.display = 'block';
       };
       if (event.target.files[0]) reader.readAsDataURL(event.target.files[0]);
     }
@@ -916,8 +991,6 @@
     }
 
     /* LOGIK PENGIRAAN MARKAH AMALI BAHARU */
-    
-    // 1. Apabila pilihan rubrik berubah, hitung automatik jumlah kemahiran tersebut
     function onCriterionChange(skillId) {
       let sum = 0;
       for (let i = 1; i <= 5; i++) {
@@ -931,7 +1004,6 @@
       calculateGrandTotalAmali();
     }
 
-    // 2. Apabila pensyarah menyunting jumlah kemahiran secara manual
     function onManualSkillTotalChange() {
       AMALI_SKILLS.forEach(id => {
         const input = document.getElementById(`total_${id}`);
@@ -943,7 +1015,6 @@
       calculateGrandTotalAmali();
     }
 
-    // 3. Mengira Jumlah Keseluruhan Amali daripada 4 jumlah akhir kemahiran
     function calculateGrandTotalAmali() {
       let grandTotal = 0;
       AMALI_SKILLS.forEach(id => {
@@ -1029,10 +1100,16 @@
       document.getElementById('btn-tab-amali').classList.toggle('active', tab === 'amali');
       document.getElementById('btn-tab-simulasi').classList.toggle('active', tab === 'simulasi');
       document.getElementById('btn-tab-dashboard').classList.toggle('active', tab === 'dashboard');
+      document.getElementById('btn-tab-rawdata').classList.toggle('active', tab === 'rawdata');
 
       document.getElementById('sec-amali').classList.toggle('hidden', tab !== 'amali');
       document.getElementById('sec-simulasi').classList.toggle('hidden', tab !== 'simulasi');
       document.getElementById('sec-dashboard').classList.toggle('hidden', tab !== 'dashboard');
+      document.getElementById('sec-rawdata').classList.toggle('hidden', tab !== 'rawdata');
+
+      if (tab === 'rawdata') {
+        loadRawDataKelas();
+      }
 
       if (window.innerWidth <= 850) {
         document.getElementById('sidebarMenu').classList.remove('open');
@@ -1121,6 +1198,46 @@
       } catch(err) {
         if(status) status.textContent = 'Gagal memuatkan markah: ' + err.message;
         showAlert(err.message, true);
+      }
+    }
+
+    /* MUAT DATA RAW KESELURUHAN KELAS DARI SCRIPT GOOGLE */
+    async function loadRawDataKelas() {
+      const tbody = document.getElementById('tbRawDataBody');
+      tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;">Sedang memuatkan raw data dari Google Sheet...</td></tr>';
+      
+      try {
+        const data = await apiGet('getRawDataKelas');
+        if (!Array.isArray(data) || data.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; color:red;">Tiada rekod data ditemui.</td></tr>';
+          return;
+        }
+
+        document.getElementById('rawSheetTotalCount').innerText = data.length;
+        let unitSet = new Set();
+        data.forEach(p => { if(p.unit && p.unit !== '-') unitSet.add(p.unit); });
+        document.getElementById('rawSheetUnit').innerText = Array.from(unitSet).join(', ') || 'Semua Unit';
+
+        let html = '';
+        data.forEach((p, idx) => {
+          const statusBadge = p.count === 2 ? 'Lengkap (P1&P2)' : (p.count === 1 ? 'Sepenuhnya (1 Penilai)' : 'Belum Dinilai');
+          html += `<tr>
+            <td style="text-align:center;">${idx + 1}</td>
+            <td>${escapeHtml(p.angkaGiliran)}</td>
+            <td><b>${escapeHtml(p.nama)}</b></td>
+            <td style="text-align:center;">${escapeHtml(p.unit)}</td>
+            <td style="text-align:center;">${p.count ? p.purata.hantaran : '-'}</td>
+            <td style="text-align:center;">${p.count ? p.purata.sambut : '-'}</td>
+            <td style="text-align:center;">${p.count ? p.purata.gelecek : '-'}</td>
+            <td style="text-align:center;">${p.count ? p.purata.jaring : '-'}</td>
+            <td style="text-align:center; font-weight:bold; background:#f8fafc;">${p.count ? p.purata.total : '-'}</td>
+            <td style="text-align:center; font-size:0.72rem;">${statusBadge}</td>
+          </tr>`;
+        });
+
+        tbody.innerHTML = html;
+      } catch(err) {
+        tbody.innerHTML = `<tr><td colspan="10" style="text-align:center; color:red;">Ralat memuatkan raw data: ${escapeHtml(err.message)}</td></tr>`;
       }
     }
 
