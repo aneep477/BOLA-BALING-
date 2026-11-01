@@ -344,6 +344,7 @@
     }
 
     @media print {
+      @page { size: landscape; margin: 8mm; }
       aside.sidebar, .top-bar-mobile, .card-form, .btn-print, .uploader-box, nav.nav-menu { display: none !important; }
       main.main-wrapper { padding: 0; margin: 0; max-width: 100%; }
       .dashboard-card { border: none !important; box-shadow: none !important; padding: 0 !important; background: transparent !important; }
@@ -865,7 +866,7 @@
         </div>
       </div>
 
-      <!-- TAB 4: BORANG RAW DATA AMALI KEMAHIRAN (KESELURUHAN KELAS) -->
+      <!-- TAB 4: BORANG RAW DATA AMALI KEMAHIRAN (PENILAI 1 & PENILAI 2) -->
       <div id="sec-rawdata" class="dashboard-card hidden">
         <div class="card-header card-form">
           <h3><i class="fa-solid fa-table-list" style="color: var(--primary);"></i> Borang Raw Data Kemahiran Keseluruhan Kelas</h3>
@@ -884,7 +885,7 @@
           <div class="report-header">
             <img id="imgLogoPreviewRaw" class="logo-img" src="" alt="Logo IPG" style="display:none; margin:0 auto 4px auto;">
             <h2 style="font-size:1.1rem; text-transform:uppercase; margin-bottom: 2px;">INSTITUT PENDIDIKAN GURU KAMPUS DARULAMAN</h2>
-            <h3 style="font-size:0.95rem; font-weight:bold;">BORANG RAW DATA KEMAHIRAN AMALI (KESELURUHAN KELAS)</h3>
+            <h3 style="font-size:0.95rem; font-weight:bold;">BORANG RAW DATA KEMAHIRAN AMALI (PENILAI 1 & PENILAI 2)</h3>
             <h3 style="font-size:0.85rem; font-weight:normal;">KURSUS: MPU3421 KOKURIKULUM - PERMAINAN (BOLA BALING)</h3>
           </div>
 
@@ -893,26 +894,32 @@
             <div>Jumlah Pelajar: <span id="rawSheetTotalCount">0</span> orang</div>
           </div>
 
-          <table class="report-table" style="font-size: 0.78rem;">
+          <table class="report-table" style="font-size: 0.75rem;">
             <thead>
               <tr>
-                <th rowspan="2" style="width: 4%; text-align: center;">Bil</th>
-                <th rowspan="2" style="width: 14%;">Angka Giliran</th>
-                <th rowspan="2" style="width: 24%;">Nama Pelajar</th>
-                <th rowspan="2" style="width: 10%;">Unit</th>
-                <th colspan="4" style="text-align: center;">Kemahiran Amali (/15)</th>
-                <th rowspan="2" style="width: 10%; text-align: center;">Jumlah Amali (/60)</th>
-                <th rowspan="2" style="width: 8%; text-align: center;">Status Penilaian</th>
+                <th rowspan="2" style="width: 3%; text-align: center;">Bil</th>
+                <th rowspan="2" style="width: 12%;">Angka Giliran</th>
+                <th rowspan="2" style="width: 20%;">Nama Pelajar</th>
+                <th rowspan="2" style="width: 8%; text-align: center;">Unit</th>
+                <th colspan="5" style="text-align: center; background: #e2e8f0;">PENILAI 1 (P1)</th>
+                <th colspan="5" style="text-align: center; background: #cbd5e1;">PENILAI 2 (P2)</th>
+                <th rowspan="2" style="width: 7%; text-align: center; background: #e2e8f0;">PURATA (/60)</th>
               </tr>
               <tr>
-                <th style="text-align: center;">Hantaran</th>
-                <th style="text-align: center;">Menyambut</th>
-                <th style="text-align: center;">Mengelecek</th>
-                <th style="text-align: center;">Menjaring</th>
+                <th style="text-align: center; width: 5%;">Han</th>
+                <th style="text-align: center; width: 5%;">Sam</th>
+                <th style="text-align: center; width: 5%;">Gel</th>
+                <th style="text-align: center; width: 5%;">Jar</th>
+                <th style="text-align: center; width: 6%; font-weight:bold;">Jml P1</th>
+                <th style="text-align: center; width: 5%;">Han</th>
+                <th style="text-align: center; width: 5%;">Sam</th>
+                <th style="text-align: center; width: 5%;">Gel</th>
+                <th style="text-align: center; width: 5%;">Jar</th>
+                <th style="text-align: center; width: 6%; font-weight:bold;">Jml P2</th>
               </tr>
             </thead>
             <tbody id="tbRawDataBody">
-              <tr><td colspan="10" style="text-align: center;">Sila klik 'Muat Semula Data' untuk memaparkan senarai.</td></tr>
+              <tr><td colspan="15" style="text-align: center;">Sila klik 'Muat Semula Data' untuk memaparkan senarai.</td></tr>
             </tbody>
           </table>
 
@@ -1201,15 +1208,15 @@
       }
     }
 
-    /* MUAT DATA RAW KESELURUHAN KELAS */
+    /* MUAT DATA RAW KESELURUHAN KELAS (PENILAI 1 & PENILAI 2) */
     async function loadRawDataKelas() {
       const tbody = document.getElementById('tbRawDataBody');
-      tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;">Sedang memuatkan raw data dari Google Sheet...</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="15" style="text-align:center;">Sedang memuatkan raw data dari Google Sheet...</td></tr>';
       
       try {
         const data = await apiGet('getRawDataKelas');
         if (!Array.isArray(data) || data.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; color:red;">Tiada rekod data ditemui.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="15" style="text-align:center; color:red;">Tiada rekod data ditemui.</td></tr>';
           return;
         }
 
@@ -1220,24 +1227,42 @@
 
         let html = '';
         data.forEach((p, idx) => {
-          const statusBadge = p.count === 2 ? 'Lengkap (P1&P2)' : (p.count === 1 ? 'Sepenuhnya (1 Penilai)' : 'Belum Dinilai');
+          const p1H = p.p1.recorded ? p.p1.hantaran : '-';
+          const p1S = p.p1.recorded ? p.p1.sambut : '-';
+          const p1G = p.p1.recorded ? p.p1.gelecek : '-';
+          const p1J = p.p1.recorded ? p.p1.jaring : '-';
+          const p1Tot = p.p1.recorded ? p.p1.total : '-';
+
+          const p2H = p.p2.recorded ? p.p2.hantaran : '-';
+          const p2S = p.p2.recorded ? p.p2.sambut : '-';
+          const p2G = p.p2.recorded ? p.p2.gelecek : '-';
+          const p2J = p.p2.recorded ? p.p2.jaring : '-';
+          const p2Tot = p.p2.recorded ? p.p2.total : '-';
+
+          const purataTot = p.count ? p.purata.total : '-';
+
           html += `<tr>
             <td style="text-align:center;">${idx + 1}</td>
             <td>${escapeHtml(p.angkaGiliran)}</td>
             <td><b>${escapeHtml(p.nama)}</b></td>
             <td style="text-align:center;">${escapeHtml(p.unit)}</td>
-            <td style="text-align:center;">${p.count ? p.purata.hantaran : '-'}</td>
-            <td style="text-align:center;">${p.count ? p.purata.sambut : '-'}</td>
-            <td style="text-align:center;">${p.count ? p.purata.gelecek : '-'}</td>
-            <td style="text-align:center;">${p.count ? p.purata.jaring : '-'}</td>
-            <td style="text-align:center; font-weight:bold; background:#f8fafc;">${p.count ? p.purata.total : '-'}</td>
-            <td style="text-align:center; font-size:0.72rem;">${statusBadge}</td>
+            <td style="text-align:center;">${p1H}</td>
+            <td style="text-align:center;">${p1S}</td>
+            <td style="text-align:center;">${p1G}</td>
+            <td style="text-align:center;">${p1J}</td>
+            <td style="text-align:center; font-weight:bold; background:#f0fdf4;">${p1Tot}</td>
+            <td style="text-align:center;">${p2H}</td>
+            <td style="text-align:center;">${p2S}</td>
+            <td style="text-align:center;">${p2G}</td>
+            <td style="text-align:center;">${p2J}</td>
+            <td style="text-align:center; font-weight:bold; background:#eff6ff;">${p2Tot}</td>
+            <td style="text-align:center; font-weight:bold; background:#f8fafc;">${purataTot}</td>
           </tr>`;
         });
 
         tbody.innerHTML = html;
       } catch(err) {
-        tbody.innerHTML = `<tr><td colspan="10" style="text-align:center; color:red;">Ralat memuatkan raw data: ${escapeHtml(err.message)}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="15" style="text-align:center; color:red;">Ralat memuatkan raw data: ${escapeHtml(err.message)}</td></tr>`;
       }
     }
 
