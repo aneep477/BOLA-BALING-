@@ -990,7 +990,7 @@
       return await res.json();
     }
 
-    /* LOGIK PENGIRAAN MARKAH AMALI BAHARU */
+    /* LOGIK PENGIRAAN MARKAH AMALI */
     function onCriterionChange(skillId) {
       let sum = 0;
       for (let i = 1; i <= 5; i++) {
@@ -1201,7 +1201,7 @@
       }
     }
 
-    /* MUAT DATA RAW KESELURUHAN KELAS DARI SCRIPT GOOGLE */
+    /* MUAT DATA RAW KESELURUHAN KELAS */
     async function loadRawDataKelas() {
       const tbody = document.getElementById('tbRawDataBody');
       tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;">Sedang memuatkan raw data dari Google Sheet...</td></tr>';
